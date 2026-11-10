@@ -2,15 +2,16 @@
 
 ## Project Overview
 
-Data Cleaning & Quality Audit is a Python project that helps identify and fix common problems in a dataset.
+Data Cleaning & Quality Audit is a Python project that helps the users to identify and fix common problems in a dataset.
 
 The project uses Pandas and NumPy to find missing values, duplicate records, invalid values, inconsistent formatting, and possible outliers.
 
-It also validates the cleaned data and generates a report to compare the dataset before and after cleaning.
+Users can clean the sample customer dataset or provide their own CSV file. The project also validates the cleaned data and generates a report to compare data quality before and after cleaning.
 
 ## Features
 
 - Load and inspect customer data.
+- Load a sample dataset or a user-provided CSV file.
 - Find missing values.
 - Detect duplicate records.
 - Clean customer names and city names.
@@ -18,10 +19,12 @@ It also validates the cleaned data and generates a report to compare the dataset
 - Detect invalid ages and purchase amounts.
 - Handle missing values.
 - Convert date columns into the correct format.
+- Report missing and invalid dates separately.
 - Detect possible outliers using the IQR method.
 - Validate cleaned data using assertions.
 - Generate a before-and-after quality report.
 - Export cleaned data and reports into CSV files.
+- Check dataset columns and display errors for incorrect input.
 
 ## Technologies Used
 
@@ -30,6 +33,7 @@ It also validates the cleaned data and generates a report to compare the dataset
 - NumPy
 - CSV File Handling
 - Data Validation
+- Unit Testing
 
 ## Project Structure
 
@@ -40,6 +44,9 @@ Data-Cleaning-Quality-Audit/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
+│
+├── tests/
+│   └── test_analysis.py
 │
 └── output/
     ├── cleaned_customers.csv
@@ -72,6 +79,36 @@ pip install -r requirements.txt
 python main.py
 ```
 
+Press Enter to use the sample dataset, or enter the path of your own CSV file.
+
+Your CSV file must contain these five columns:
+
+- Customer
+- Age
+- City
+- Purchase
+- Purchase_Date
+
+## Unit Testing
+
+The project uses Python's built-in `unittest` module to test the data cleaning function.
+
+Run the tests using this command:
+
+```bash
+py -m unittest tests/test_analysis.py -v
+```
+
+The tests check:
+
+- Standardized column names.
+- Missing customer and city values.
+- Invalid age values.
+- Invalid purchase values.
+- Duplicate records.
+- Missing purchase dates.
+- Quality report fields.
+
 ## Output Files
 
 After running the project, an output folder is created automatically.
@@ -94,10 +131,11 @@ The project follows these main steps:
 4. Correct numeric and date data types.
 5. Detect invalid ages and purchase amounts.
 6. Remove duplicate records.
-7. Fill missing values.
-8. Detect possible outliers using IQR.
-9. Validate the cleaned dataset.
-10. Export the cleaned data and quality report.
+7. Fill missing customer, city, age, and purchase values.
+8. Keep missing purchase dates and report them separately.
+9. Detect possible outliers using IQR.
+10. Validate the cleaned dataset.
+11. Generate the quality report and export CSV files.
 
 ## What I Learned
 
@@ -110,15 +148,16 @@ While working on this project, I practiced:
 - Detecting invalid values.
 - Using the IQR method to find outliers.
 - Applying data validation with assertions.
+- Writing basic unit tests using unittest.
 - Generating reports and exporting CSV files.
 
 ## Future Improvements
 
-- Allow users to upload their own datasets.
 - Add more data validation rules.
-- Support multiple dataset formats.
+- Support more dataset formats.
 - Create data quality charts.
 - Build a simple user interface.
+- Add more automated tests.
 
 ## Author
 
